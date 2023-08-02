@@ -1,11 +1,15 @@
 import "./styles/App.css";
 import Button from "react-bootstrap/Button";
+import { Provider } from "react-redux";
+import store from "./store";
 
 function App() {
   return (
-    <div className="">
-      <Button variant="primary">Primary</Button>{" "}
-    </div>
+    <Provider store={store}>
+      <div className="">
+        <Button variant="primary">Primary</Button>{" "}
+      </div>
+    </Provider>
   );
 }
 
