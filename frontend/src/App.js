@@ -2,13 +2,21 @@ import "./styles/App.css";
 import Button from "react-bootstrap/Button";
 import { Provider } from "react-redux";
 import store from "./store";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+import Home from "./containers/Home";
+import Error404 from "./containers/errors/Error404";
 
 function App() {
   return (
     <Provider store={store}>
-      <div className="">
-        <Button variant="primary">Primary</Button>{" "}
-      </div>
+      <Router>
+        <Routes>
+          {/* Error Display*/}
+          <Route path="*" element={<Error404 />} />
+          <Route exact path="/" element={<Home />} />
+        </Routes>
+      </Router>
     </Provider>
   );
 }
