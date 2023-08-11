@@ -18,6 +18,7 @@ class User(models.Model):
     cellphone = models.CharField(max_length=10)
     name = models.CharField(max_length=50)
     lastName = models.CharField(max_length=50)
+    address = models.TextField(default="Some direction")
 
     def __str__(self) -> str:
         return self.name
