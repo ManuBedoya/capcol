@@ -1,7 +1,7 @@
 import Layout from "../../hocs/Layout";
 
 const Error404 = () => {
-  return <Layout>home</Layout>;
+  return <Layout>Erro4 404</Layout>;
 };
 
 export default Error404;
