@@ -1,6 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Navbar from "react-bootstrap/Navbar";
 import Image from "react-bootstrap/Image";
+import { Link } from "react-router-dom";
 
 export const NavbarComponent = () => {
   return (
@@ -10,7 +11,10 @@ export const NavbarComponent = () => {
       data-bs-theme="dark"
       className="d-flex justify-content-between"
     >
-      <Image src="./images/logo.png" roundedCircle />
+      <Link to="/" className="d-flex" style={{ textDecoration: "none" }}>
+        <Image src="./images/logo.png" roundedCircle height={50} width={50} />
+        <Navbar.Brand className="p-2">CAPCOL</Navbar.Brand>
+      </Link>
       <div>
         <Button variant="outline-primary">Iniciar sesion</Button>
         <Button variant="outline-success">Registrarse</Button>
