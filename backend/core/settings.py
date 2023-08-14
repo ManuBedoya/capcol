@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    "corsheaders",
+    'corsheaders',
     'rest_framework',
 
     'ecommerceApi',
@@ -128,4 +128,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # cors
-CORS_ALLOWED_ORIGINS = []
+ALLOWED_HOSTS = ['*']
+
+CORS_ORIGIN_WHITELIST = ('http://localhost:3000',
+                         'http://127.0.0.1:3000')
