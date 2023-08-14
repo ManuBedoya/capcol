@@ -1,5 +1,4 @@
 import "./styles/App.css";
-import Button from "react-bootstrap/Button";
 import { Provider } from "react-redux";
 import store from "./store";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
