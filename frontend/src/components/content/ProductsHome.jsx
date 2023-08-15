@@ -1,7 +1,10 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import { useState, useEffect, React } from "react";
 import axios from "axios";
+import "./../../styles/App.css";
 
 export default function ProductsHome() {
   const [products, setProducts] = useState([]);
@@ -19,24 +22,30 @@ export default function ProductsHome() {
       .then(function () {});
   }, []);
 
-  console.log(products.length);
-
+  console.log(products);
   return (
     <>
-      <div className="d-flex flex-wrap">
-        {products.map(({ id, name, description, ammount, price }) => {
+      <div
+        className="d-flex flex-wrap justify-content-evenly text-center m-2"
+        style={{ height: "600px" }}
+      >
+        {products.map(({ id, name, description, ammount, price, img }) => {
           return (
-            <Card
-              key={id}
-              style={{ width: "25%", height: "18rem" }}
-              className=""
-            >
-              <Card.Img variant="top" />
-              <Card.Body>
-                <Card.Title>{name}</Card.Title>
-                <Card.Text>{description}</Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-              </Card.Body>
+            <Card key={id} className="m-auto mb-5 w-25 h-100">
+              <Row>
+                <Col>
+                  <Card.Body>
+                    <Card.Title>{name}</Card.Title>
+                    <Card.Text>{description}</Card.Text>
+                    <Button className="btn btn-info position-absolute bottom-0 start-0 m-2">
+                      Ver Producto
+                    </Button>
+                  </Card.Body>
+                </Col>
+                <Col>
+                  <Card.Img variant="top" src={img} />
+                </Col>
+              </Row>
             </Card>
           );
         })}
