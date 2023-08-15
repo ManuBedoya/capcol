@@ -1,42 +1,46 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { useState } from "react";
+import { useState, useEffect, React } from "react";
 import axios from "axios";
-import React from "react";
 
-function ProductsHome() {
+export default function ProductsHome() {
   const [products, setProducts] = useState([]);
 
-  function handlerProducts() {
+  useEffect(() => {
     axios
-      .get("http://localhost:8000/api/v1/users/")
+      .get("http://localhost:8000/api/v1/products/")
       .then(function (response) {
-        console.log("Products in request", response["data"]);
+        const { data } = response;
+        setProducts(data);
       })
       .catch(function (error) {
         console.log(error);
       })
       .then(function () {});
-  }
-  console.log("product antes", products);
-  let data = handlerProducts();
-  console.log("product despues", data);
+  }, []);
+
+  console.log(products.length);
 
   return (
-    <div className="d-flex">
-      <Card style={{ width: "25%" }}>
-        <Card.Img variant="top" />
-        <Card.Body>
-          <Card.Title>Card Title Number #</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
-        </Card.Body>
-      </Card>
-    </div>
+    <>
+      <div className="d-flex flex-wrap">
+        {products.map(({ id, name, description, ammount, price }) => {
+          return (
+            <Card
+              key={id}
+              style={{ width: "25%", height: "18rem" }}
+              className=""
+            >
+              <Card.Img variant="top" />
+              <Card.Body>
+                <Card.Title>{name}</Card.Title>
+                <Card.Text>{description}</Card.Text>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
+          );
+        })}
+      </div>
+    </>
   );
 }
-
-export default ProductsHome;
