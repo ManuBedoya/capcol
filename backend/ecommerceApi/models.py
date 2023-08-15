@@ -8,6 +8,7 @@ class Product(models.Model):
     description = models.TextField()
     ammount = models.IntegerField()
     price = models.FloatField()
+    img = models.TextField(default="Empty Image")
 
     def __str__(self):
         return self.name
