@@ -3,23 +3,31 @@ import { Container, Row, Col, Image, Button, Modal } from "react-bootstrap";
 import Layout from "../hocs/Layout";
 import { useState } from "react";
 
-export const DetailProduct = () => {
-  const [show, setShow] = useState(false);
+import { FormConfirmBuy } from "../components/content/FormConfirmBuy";
 
-  const handleShow = () => setShow(true);
+export const DetailProduct = () => {
+  const [show, setShow] = useState(true);
+
+  const handleShow = () => setShow(!show);
 
   const { state } = useLocation();
   return (
     <Layout>
       <Modal show={show}>
         <Modal.Header closeButton>
-          <Modal.Title>Login Form</Modal.Title>
+          <Modal.Title>Datos Pedido</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <></>
+          <h5>detalle pedido</h5>
+          <FormConfirmBuy />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary">Close Modal</Button>
+          <Button variant="success" onClick={handleShow}>
+            Confirmar Pedido
+          </Button>
+          <Button variant="success" onClick={handleShow}>
+            Confirmar Pedido
+          </Button>
         </Modal.Footer>
       </Modal>
       <Container className="mt-5">
@@ -33,7 +41,7 @@ export const DetailProduct = () => {
             <section className="h-100 d-flex flex-column justify-content-end">
               <h2 className="text-end">${state.price}COP</h2>
               <div className="d-flex justify-content-end">
-                <Button variant="success" className="w-25">
+                <Button variant="success" className="w-25" onClick={handleShow}>
                   Realizar Pedido
                 </Button>
               </div>
