@@ -1,4 +1,4 @@
-import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -26,7 +26,7 @@ export default function ProductsHome() {
   return (
     <>
       <div className="d-flex flex-wrap justify-content-evenly text-center m-2">
-        {products.map(({ id, name, description, ammount, price, img }) => {
+        {products.map(({ id, name, img, description, price, ammount }) => {
           return (
             <Card
               key={id}
@@ -35,17 +35,26 @@ export default function ProductsHome() {
             >
               <Row>
                 <Col>
-                  <Card.Img variant="top" src={img} height="300px" />
+                  <Card.Img variant="top" src={img} height="450px" />
                 </Col>
               </Row>
               <Row>
                 <Col>
                   <Card.Body>
                     <Card.Title>{name}</Card.Title>
-                    <Card.Text>{description}</Card.Text>
-                    <Button className="btn btn-info position-absolute bottom-0 start-0 m-2">
+                    <Link
+                      to={"/detail-product"}
+                      state={{
+                        name: name,
+                        img: img,
+                        description: description,
+                        price: price,
+                        ammount: ammount,
+                      }}
+                      className="btn btn-info position-absolute bottom-0 start-0 m-2"
+                    >
                       Ver Producto
-                    </Button>
+                    </Link>
                   </Card.Body>
                 </Col>
               </Row>

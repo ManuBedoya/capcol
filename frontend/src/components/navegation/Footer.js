@@ -2,6 +2,7 @@ import React from "react";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { MDBFooter, MDBContainer, MDBIcon, MDBBtn } from "mdb-react-ui-kit";
+import { url_instagram, url_gmail } from "../../constants/constants";
 
 export const Footer = () => {
   return (
@@ -13,7 +14,8 @@ export const Footer = () => {
             color="light"
             floating
             className="m-1"
-            href="#!"
+            target="_blank"
+            href={url_instagram}
             role="button"
           >
             <MDBIcon fab icon="facebook-f" />
@@ -24,18 +26,8 @@ export const Footer = () => {
             color="light"
             floating
             className="m-1"
-            href="#!"
-            role="button"
-          >
-            <MDBIcon fab icon="twitter" />
-          </MDBBtn>
-
-          <MDBBtn
-            outline
-            color="light"
-            floating
-            className="m-1"
-            href="#!"
+            target="_blank"
+            href={url_gmail}
             role="button"
           >
             <MDBIcon fab icon="google" />
@@ -45,7 +37,8 @@ export const Footer = () => {
             color="light"
             floating
             className="m-1"
-            href="#!"
+            target="_blank"
+            href={url_instagram}
             role="button"
           >
             <MDBIcon fab icon="instagram" />
@@ -56,21 +49,11 @@ export const Footer = () => {
             color="light"
             floating
             className="m-1"
-            href="#!"
+            target="_blank"
+            href={url_instagram}
             role="button"
           >
-            <MDBIcon fab icon="linkedin-in" />
-          </MDBBtn>
-
-          <MDBBtn
-            outline
-            color="light"
-            floating
-            className="m-1"
-            href="#!"
-            role="button"
-          >
-            <MDBIcon fab icon="github" />
+            <MDBIcon fab icon="whatsapp" />
           </MDBBtn>
         </section>
       </MDBContainer>
@@ -79,9 +62,9 @@ export const Footer = () => {
         className="text-center p-3"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
-        © 2023 Copyright:
-        <a className="text-white" href="#">
-          Manuel Bedoya
+        © 2023 Copyright:<span> </span>
+        <a className="text-white" href="">
+          Capcol
         </a>
       </div>
     </MDBFooter>

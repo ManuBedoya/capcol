@@ -6,12 +6,12 @@ import { Footer } from "../components/navegation/Footer";
 
 const Layout = (props) => {
   return (
-    <div>
+    <>
       <NavbarComponent />
       <ToastContainer autoClose={5000} />
       {props.children}
       <Footer />
-    </div>
+    </>
   );
 };
 export default Layout;
