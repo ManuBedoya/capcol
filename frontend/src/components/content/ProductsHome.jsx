@@ -25,13 +25,19 @@ export default function ProductsHome() {
   console.log(products);
   return (
     <>
-      <div
-        className="d-flex flex-wrap justify-content-evenly text-center m-2"
-        style={{ height: "600px" }}
-      >
+      <div className="d-flex flex-wrap justify-content-evenly text-center m-2">
         {products.map(({ id, name, description, ammount, price, img }) => {
           return (
-            <Card key={id} className="m-auto mb-5 w-25 h-100">
+            <Card
+              key={id}
+              className="m-auto mb-5 w-25"
+              style={{ height: "600px" }}
+            >
+              <Row>
+                <Col>
+                  <Card.Img variant="top" src={img} height="300px" />
+                </Col>
+              </Row>
               <Row>
                 <Col>
                   <Card.Body>
@@ -41,9 +47,6 @@ export default function ProductsHome() {
                       Ver Producto
                     </Button>
                   </Card.Body>
-                </Col>
-                <Col>
-                  <Card.Img variant="top" src={img} />
                 </Col>
               </Row>
             </Card>
