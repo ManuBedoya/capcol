@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Image, Button, Modal } from "react-bootstrap";
-import Layout from "../hocs/Layout";
-import { useState } from "react";
-import swal from "sweetalert";
 import { FormConfirmBuy } from "../components/content/FormConfirmBuy";
+import Layout from "../hocs/Layout";
+import swal from "sweetalert";
 
 export const DetailProduct = () => {
   const navigate = useNavigate();
@@ -23,6 +23,7 @@ export const DetailProduct = () => {
   };
 
   const { state } = useLocation();
+  const { name, description, price, img, ammount } = state;
   return (
     <Layout>
       <Modal show={show}>
@@ -30,7 +31,19 @@ export const DetailProduct = () => {
           <Modal.Title>Datos Pedido</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h5>detalle pedido</h5>
+          <div>
+            <p>
+              <strong>Producto: </strong>
+              {name}
+            </p>
+            <p>
+              <strong>Unidad(es): </strong>
+              {ammount}
+            </p>
+            <p>
+              <strong>Valor: </strong>${ammount * price}
+            </p>
+          </div>
           <FormConfirmBuy />
         </Modal.Body>
         <Modal.Footer>
@@ -45,19 +58,19 @@ export const DetailProduct = () => {
       <Container className="mt-5">
         <Row>
           <Col>
-            <Image src={state.img} width={"100%"}></Image>
+            <Image src={img} width={"100%"}></Image>
           </Col>
           <Col className="d-flex flex-column">
-            <h1 className="text-center">{state.name}</h1>
-            <p>{state.description}</p>
+            <h1 className="text-center">{name}</h1>
+            <p>{description}</p>
             <section className="h-100 d-flex flex-column justify-content-end">
-              <h2 className="text-end">${state.price}COP</h2>
+              <h2 className="text-end">${price}COP</h2>
               <div className="d-flex justify-content-end">
                 <Button variant="success" className="w-25" onClick={handleShow}>
                   Realizar Pedido
                 </Button>
               </div>
-              <h6 className="text-end">Cantidad: {state.ammount}</h6>
+              <h6 className="text-end">Cantidad: {ammount}</h6>
             </section>
           </Col>
         </Row>
