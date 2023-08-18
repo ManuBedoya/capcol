@@ -1,20 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { FormDataCustomer } from "./formDataCustomer/FormDataCustomer";
 import { Modal, Button } from "react-bootstrap";
+import { confirmBuyMessages } from "../../constants/constants";
 import swal from "sweetalert";
 
 export const ModalDetailProduct = ({ state, show, handleShow }) => {
   const navigate = useNavigate();
 
   const confirmOrder = () => {
-    swal(
-      "Pedido confirmado",
-      "Pronto te llegará un correo de confirmación del pedido",
-      "success"
-    ).then(() => {
-      handleShow();
-      navigate("/");
-    });
+    swal(confirmBuyMessages.title, confirmBuyMessages.detail, "success").then(
+      () => {
+        handleShow();
+        navigate("/");
+      }
+    );
   };
 
   const { name, price, ammount } = state;
