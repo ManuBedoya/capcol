@@ -1,14 +1,26 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Image, Button, Modal } from "react-bootstrap";
 import Layout from "../hocs/Layout";
 import { useState } from "react";
-
+import swal from "sweetalert";
 import { FormConfirmBuy } from "../components/content/FormConfirmBuy";
 
 export const DetailProduct = () => {
-  const [show, setShow] = useState(true);
+  const navigate = useNavigate();
 
+  const [show, setShow] = useState(false);
   const handleShow = () => setShow(!show);
+
+  const confirmOrder = () => {
+    swal(
+      "Pedido confirmado",
+      "Pronto te llegará un correo de confirmación del pedido",
+      "success"
+    ).then(() => {
+      handleShow();
+      navigate("/");
+    });
+  };
 
   const { state } = useLocation();
   return (
@@ -22,10 +34,10 @@ export const DetailProduct = () => {
           <FormConfirmBuy />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="success" onClick={handleShow}>
-            Confirmar Pedido
+          <Button variant="danger" onClick={handleShow}>
+            Cancelar
           </Button>
-          <Button variant="success" onClick={handleShow}>
+          <Button variant="success" onClick={confirmOrder}>
             Confirmar Pedido
           </Button>
         </Modal.Footer>
