@@ -2,7 +2,7 @@ import { Form, Row, Col } from "react-bootstrap";
 import { RadioBtnIsMOF } from "./RadioBtnIsMOF";
 import { FormAddress } from "./FormAddress";
 
-export const FormConfirmBuy = () => {
+export const FormDataCustomer = () => {
   return (
     <Form>
       <Form.Group className="mb-3" controlId="email">

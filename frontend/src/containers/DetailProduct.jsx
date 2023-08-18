@@ -1,60 +1,19 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { Container, Row, Col, Image, Button, Modal } from "react-bootstrap";
-import { FormConfirmBuy } from "../components/content/FormConfirmBuy";
+import { useLocation } from "react-router-dom";
+import { Container, Row, Col, Image, Button } from "react-bootstrap";
+import { ModalDetailProduct } from "../components/general/ModalDetailProduct";
 import Layout from "../hocs/Layout";
-import swal from "sweetalert";
 
 export const DetailProduct = () => {
-  const navigate = useNavigate();
+  const { state } = useLocation();
 
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(!show);
 
-  const confirmOrder = () => {
-    swal(
-      "Pedido confirmado",
-      "Pronto te llegará un correo de confirmación del pedido",
-      "success"
-    ).then(() => {
-      handleShow();
-      navigate("/");
-    });
-  };
-
-  const { state } = useLocation();
   const { name, description, price, img, ammount } = state;
   return (
     <Layout>
-      <Modal show={show}>
-        <Modal.Header closeButton>
-          <Modal.Title>Datos Pedido</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div>
-            <p>
-              <strong>Producto: </strong>
-              {name}
-            </p>
-            <p>
-              <strong>Unidad(es): </strong>
-              {ammount}
-            </p>
-            <p>
-              <strong>Valor: </strong>${ammount * price}
-            </p>
-          </div>
-          <FormConfirmBuy />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="danger" onClick={handleShow}>
-            Cancelar
-          </Button>
-          <Button variant="success" onClick={confirmOrder}>
-            Confirmar Pedido
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <ModalDetailProduct state={state} show={show} handleShow={handleShow} />
       <Container className="mt-5">
         <Row>
           <Col>

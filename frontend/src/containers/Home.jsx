@@ -1,5 +1,5 @@
 import Layout from "../hocs/Layout";
-import ProductsHome from "../components/content/ProductsHome";
+import ProductsHome from "../components/general/ProductsHome";
 
 const Home = () => {
   return (
