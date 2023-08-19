@@ -63,9 +63,7 @@ export const Footer = () => {
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
         © 2023 Copyright:<span> </span>
-        <a className="text-white" href="">
-          Capcol
-        </a>
+        <span className="text-white">Capcol</span>
       </div>
     </MDBFooter>
   );

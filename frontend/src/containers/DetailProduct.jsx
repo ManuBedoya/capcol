@@ -1,13 +1,6 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import {
-  Container,
-  Row,
-  Col,
-  Image,
-  Button,
-  FormSelect,
-} from "react-bootstrap";
+import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import { ModalDetailProduct } from "../components/general/ModalDetailProduct";
 import Layout from "../hocs/Layout";
 

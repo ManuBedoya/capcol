@@ -17,7 +17,9 @@ export const NavbarComponent = () => {
       </Link>
       <div>
         <Button variant="outline-primary">Iniciar sesion</Button>
-        <Button variant="outline-success">Registrarse</Button>
+        <Link to={"/register"}>
+          <Button variant="outline-success">Registrarse</Button>
+        </Link>
       </div>
     </Navbar>
   );
