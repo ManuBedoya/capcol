@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 
 # Create your models here.
 
@@ -15,11 +16,23 @@ class Product(models.Model):
 
 
 class User(models.Model):
+    id = models.CharField(max_length=12, primary_key=True)
     email = models.EmailField()
-    cellphone = models.CharField(max_length=10)
-    name = models.CharField(max_length=50)
-    lastName = models.CharField(max_length=50)
+    phone = models.CharField(max_length=10, default="Some phone")
+    name = models.CharField(max_length=200, default="Some name")
+    gender = models.CharField(max_length=10, default="Dome")
+    department = models.CharField(max_length=200, default="Some department")
+    city = models.CharField(max_length=200, default="Some city")
     address = models.TextField(default="Some direction")
+    username = models.CharField(max_length=200, default="Some username")
+    password = models.CharField(max_length=200, default='passwordDefault')
 
     def __str__(self) -> str:
         return self.name
+
+
+class User_forms(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = '__all__'
+        widgets = {'password': forms.PasswordInput}
