@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { chooseDepartmentMessage } from "../../../constants/constants";
 import axios from "axios";
 
-export const FormAddress = () => {
+export const FormAddress = ({ handleSetData } = (a, b) => {}) => {
   //useStates
   const [visible, setVisible] = useState(true);
   const [selectValueDepartment, setSelectValueDepartment] = useState(
@@ -41,6 +41,7 @@ export const FormAddress = () => {
   //methods
   const handleChanged = (e) => {
     setSelectValueDepartment(e.target.value);
+    handleSetData("department", e.target.value);
     if (e.target.value !== chooseDepartmentMessage) {
       setVisible(false);
     } else {
@@ -63,7 +64,7 @@ export const FormAddress = () => {
         </Form.Select>
       </Row>
       <Row className="mb-3" hidden={visible}>
-        <Form.Select>
+        <Form.Select onChange={(e) => handleSetData("city", e.target.value)}>
           <option>Elegir Ciudad</option>
           {cities.map((citie) => {
             return (
@@ -76,7 +77,11 @@ export const FormAddress = () => {
       </Row>
       <Row>
         <Form.Label>Ingresa tu direccion</Form.Label>
-        <Form.Control as="textarea" rows={3} />
+        <Form.Control
+          as="textarea"
+          rows={3}
+          onChange={(e) => handleSetData("address", e.target.value)}
+        />
         <Form.Text>Ser lo mas claro y detallado posible porfavor.</Form.Text>
       </Row>
     </>
