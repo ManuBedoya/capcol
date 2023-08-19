@@ -16,7 +16,9 @@ export const NavbarComponent = () => {
         <Navbar.Brand className="p-2">CAPCOL</Navbar.Brand>
       </Link>
       <div>
-        <Button variant="outline-primary">Iniciar sesion</Button>
+        <Link to={"/login"}>
+          <Button variant="outline-primary">Iniciar sesion</Button>
+        </Link>
         <Link to={"/register"}>
           <Button variant="outline-success">Registrarse</Button>
         </Link>

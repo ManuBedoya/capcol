@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap";
 export const FormCustomerCredential = ({ handleSetData } = (a, b) => {}) => {
   return (
     <>
-      <Form className="w-25">
+      <Form>
         <Form.Group className="mb-3" controlId="username">
           <Form.Label>Nombre de Usuario</Form.Label>
           <Form.Control
