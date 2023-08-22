@@ -30,6 +30,9 @@ class User(models.Model):
     def __str__(self) -> str:
         return self.name
 
+    def getData(self):
+        return {"username": self.username, "email": self.email, "phone": self.phone, "name": self.name, "gender": self.gender, "department": self.department, "city": self.city, "address": self.address, "username": self.username, "password": self.password}
+
 
 class User_forms(forms.ModelForm):
     class Meta:

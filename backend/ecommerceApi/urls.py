@@ -9,5 +9,7 @@ router.register(r'users', views.UserView, "users")
 
 urlpatterns = [
     path("test/", Test.as_view(), name="test"),
+    path("v1/getUser/<str:username>",
+         views.UserByUsernameView.as_view(), name="getUser"),
     path("v1/", include(router.urls))
 ]
