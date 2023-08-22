@@ -6,6 +6,7 @@ import { FormCustomerCredential } from "../components/general/formDataCustomer/F
 import { Button, Container } from "react-bootstrap";
 import swal from "sweetalert";
 import axios from "axios";
+import bcrypt from "bcryptjs";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -36,11 +37,11 @@ export const Register = () => {
         aux.username &&
         aux.password) !== ""
     ) {
+      handleSetData("password", bcrypt.hashSync(aux.password, 8));
       setData(aux);
       axios
         .post("http://localhost:8000/api/v1/users/", data)
         .then((response) => {
-          console.log(response.data);
           swal("Muy bien, estás registrado", "", "success").then(() => {
             navigate("/login");
           });
