@@ -25,10 +25,10 @@ class UserView(viewsets.ModelViewSet):
     queryset = User.objects.all()
 
 
-class UserByUsernameView(APIView):
+class PasswordByUsernameView(APIView):
 
     def get(self, request, username):
         user = User.objects.filter(username=username).first()
         if user:
-            return Response(user.getData())
+            return Response(user.getPassword())
         return Response("username not found")

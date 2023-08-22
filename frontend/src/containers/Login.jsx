@@ -3,6 +3,7 @@ import { FormCustomerCredential } from "../components/general/formDataCustomer/F
 import { Container, Button } from "react-bootstrap";
 import swal from "sweetalert";
 import axios from "axios";
+import bcrypt from "bcryptjs";
 
 export const Login = () => {
   let credentials = {
@@ -15,11 +16,18 @@ export const Login = () => {
   };
 
   const handleBtnSigIn = () => {
-    swal(
-      `Iniciaste Sesion, username: ${credentials.username}\npassword: ${credentials.password}`,
-      "",
-      "success"
-    );
+    if ((credentials.password && credentials.username) !== "") {
+      axios
+        .get("http://localhost:8000/api/v1/getUser/" + credentials.username)
+        .then((response) => {
+          const { data } = response;
+          if (bcrypt.compareSync(credentials.password, data.password)) {
+            swal(`Iniciaste Sesion`, "", "success");
+          } else {
+            swal(`Credenciales incorrectas`, "", "error");
+          }
+        });
+    }
   };
   return (
     <Layout>
