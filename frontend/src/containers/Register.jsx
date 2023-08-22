@@ -5,6 +5,7 @@ import { FormDataCustomer } from "../components/general/formDataCustomer/FormDat
 import { FormCustomerCredential } from "../components/general/formDataCustomer/FormCustomerCredential";
 import { Button, Container } from "react-bootstrap";
 import swal from "sweetalert";
+import axios from "axios";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -36,9 +37,22 @@ export const Register = () => {
         aux.password) !== ""
     ) {
       setData(aux);
-      swal("Muy bien, estás registrado", "", "success").then(() => {
-        navigate("/login");
-      });
+      axios
+        .post("http://localhost:8000/api/v1/users/", data)
+        .then((response) => {
+          console.log(response.data);
+          swal("Muy bien, estás registrado", "", "success").then(() => {
+            navigate("/login");
+          });
+        })
+        .catch((e) => {
+          swal(
+            "Error al registrar.. Intentelo de nuevo o ya tiene cuenta activa",
+            "",
+            "error"
+          );
+          console.log(e);
+        });
     } else {
       swal("Campos vacios", "", "error");
     }
