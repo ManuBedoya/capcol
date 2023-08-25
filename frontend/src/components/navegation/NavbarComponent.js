@@ -15,14 +15,14 @@ export const NavbarComponent = () => {
         <Image src="./images/logo.png" roundedCircle height={50} width={50} />
         <Navbar.Brand className="p-2">CAPCOL</Navbar.Brand>
       </Link>
-      <div>
+      {/* <div>
         <Link to={"/login"}>
           <Button variant="outline-primary">Iniciar sesion</Button>
         </Link>
         <Link to={"/register"}>
           <Button variant="outline-success">Registrarse</Button>
         </Link>
-      </div>
+      </div> */}
     </Navbar>
   );
 };
