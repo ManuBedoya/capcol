@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import viewsets
 from .models import Product, User
 from .serializer import ProductSerializer, UserSerializer
+from ecommerceApi import methods
 import json
 
 
@@ -32,3 +33,17 @@ class PasswordByUsernameView(APIView):
         if user:
             return Response(user.getPassword())
         return Response("username not found")
+
+
+class BuyWithOutLoginView(APIView):
+
+    def get(self, request):
+        return Response("im get method")
+
+    def post(self, request):
+        if request.method == 'POST':
+            body = request.body
+            body_str = body.decode('utf-8')
+            body_json = json.loads(body_str)
+            methods.sendEmailBuy(body_json)
+            return Response(body_json)

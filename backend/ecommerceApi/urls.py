@@ -11,5 +11,7 @@ urlpatterns = [
     path("test/", Test.as_view(), name="test"),
     path("v1/getUser/<str:username>",
          views.PasswordByUsernameView.as_view(), name="getUserByUsername"),
+    path("v1/buyWithOutLogin/", views.BuyWithOutLoginView.as_view(),
+         name="buyWithOutLogin"),
     path("v1/", include(router.urls))
 ]
