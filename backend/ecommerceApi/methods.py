@@ -1,19 +1,23 @@
-from django.core.mail import EmailMessage, get_connection
+from django.core.mail import EmailMultiAlternatives
+from django.utils.html import strip_tags
+from django.template.loader import render_to_string, get_template
 from django.conf import settings
 
 
 def sendEmailBuy(data):
-    with get_connection(
-        host=settings.EMAIL_HOST,
-        port=settings.EMAIL_PORT,
-        username=settings.EMAIL_HOST_USER,
-        password=settings.EMAIL_HOST_PASSWORD,
-        use_tls=settings.EMAIL_USE_TLS
-    ) as connection:
-        subject = "test Subject"
-        email_from = settings.EMAIL_HOST_USER
-        recipient_list = ["manuelfernandobedoya@gmail.com", ]
-        message = "test message"
-        EmailMessage(subject, message, email_from,
-                     recipient_list, connection=connection).send()
+
+    subject = 'Estamos revisando tu pedido'
+    template = get_template('buyPendingEmail.html')
+
+    content = template.render({
+        'name': data['userData']['name'].split()[0]
+    })
+
+    message = EmailMultiAlternatives(subject,
+                                     "Test",
+                                     settings.EMAIL_HOST_USER,
+                                     ["manuelfernandobedoya@gmail.com"])
+
+    message.attach_alternative(content, 'text/html')
+    message.send()
     print("compra hecha")
