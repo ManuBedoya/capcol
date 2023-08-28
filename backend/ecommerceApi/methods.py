@@ -1,11 +1,11 @@
 from django.core.mail import EmailMultiAlternatives
-from django.utils.html import strip_tags
-from django.template.loader import render_to_string, get_template
+from django.template.loader import get_template
 from django.conf import settings
 
 
 def sendEmailBuy(data):
 
+    # Email To Customer
     subject = 'Estamos revisando tu pedido'
     template = get_template('buyPendingEmail.html')
 
@@ -20,4 +20,12 @@ def sendEmailBuy(data):
 
     message.attach_alternative(content, 'text/html')
     message.send()
+
+# Email To Me
+    message_two = EmailMultiAlternatives("Nueva Venta",
+                                         str(data),
+                                         settings.EMAIL_HOST_USER,
+                                         ["manuelfernandobedoya@gmail.com"])
+    message_two.send()
+
     print("compra hecha")
