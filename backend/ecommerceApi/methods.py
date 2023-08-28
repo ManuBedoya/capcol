@@ -25,7 +25,7 @@ def sendEmailBuy(data):
     message_two = EmailMultiAlternatives("Nueva Venta",
                                          str(data),
                                          settings.EMAIL_HOST_USER,
-                                         ["manuelfernandobedoya@gmail.com"])
+                                         [settings.EMAIL_HOST_USER])
     message_two.send()
 
     print("compra hecha")
