@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import { ModalDetailProduct } from "../components/general/ModalDetailProduct";
 import Layout from "../hocs/Layout";
+import axios from "axios";
 
 export const DetailProduct = () => {
   const { state } = useLocation();
@@ -26,7 +27,12 @@ export const DetailProduct = () => {
 
   return (
     <Layout>
-      <ModalDetailProduct state={state} show={show} handleShow={handleShow} />
+      <ModalDetailProduct
+        state={state}
+        show={show}
+        handleShow={handleShow}
+        numProducts={numProducts}
+      />
       <Container className="mt-5">
         <Row>
           <Col>

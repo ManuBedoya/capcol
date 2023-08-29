@@ -58,7 +58,6 @@ export const Register = () => {
       swal("Campos vacios", "", "error");
     }
   };
-  console.log(data);
   const handleSetData = (key = "", value = "") => {
     aux = { ...aux, [key]: value };
   };

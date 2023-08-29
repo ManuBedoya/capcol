@@ -45,6 +45,7 @@ export default function ProductsHome() {
                     <Link
                       to={"/detail-product"}
                       state={{
+                        id: id,
                         name: name,
                         img: img,
                         description: description,
