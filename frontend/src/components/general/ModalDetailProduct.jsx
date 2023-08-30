@@ -81,7 +81,7 @@ export const ModalDetailProduct = ({
           <Spinner className="m-auto" animation="border" variant="success" />
         ) : (
           <>
-            <Modal.Header closeButton>
+            <Modal.Header closeButton onClick={handleShow}>
               <Modal.Title>Datos Pedido</Modal.Title>
             </Modal.Header>
             <Modal.Body>
