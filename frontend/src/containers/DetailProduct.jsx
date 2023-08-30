@@ -35,24 +35,28 @@ export const DetailProduct = () => {
       />
       <Container className="mt-5">
         <Row>
-          <Col>
+          <Col md xs={12}>
             <Image src={img} width={"100%"}></Image>
           </Col>
           <Col className="d-flex flex-column">
             <h1 className="text-center">{name}</h1>
             <p>{description}</p>
             <section className="h-100 d-flex flex-column justify-content-end">
-              <h2 className="text-end">${price}COP</h2>
-              <h6 className="text-end">Cantidad: </h6>
+              <h2 className="text-md-end">${price}COP</h2>
+              <h6 className="text-md-end">Cantidad: </h6>
               <input
                 type="number"
                 value={numProducts}
                 onChange={(e) => handleNumProducts(e)}
-                className="align-self-end mb-2 text-end"
+                className="align-self-md-end mb-2 text-md-end"
               />
 
-              <div className="d-flex justify-content-end">
-                <Button variant="success" className="w-25" onClick={handleShow}>
+              <div className="d-flex justify-content-md-end">
+                <Button
+                  variant="success"
+                  className="w-md-25"
+                  onClick={handleShow}
+                >
                   Realizar Pedido
                 </Button>
               </div>

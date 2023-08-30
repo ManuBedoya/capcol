@@ -6,7 +6,7 @@ import { url_instagram, url_gmail } from "../../constants/constants";
 
 export const Footer = () => {
   return (
-    <MDBFooter className="bg-dark text-center text-white">
+    <MDBFooter className="bg-dark text-center text-white border border-5 border-danger">
       <MDBContainer className="p-4 pb-0">
         <section className="mb-4">
           <MDBBtn
