@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import viewsets
 from .models import Product, User
 from .serializer import ProductSerializer, UserSerializer
+from rest_framework.parsers import MultiPartParser, FormParser
 from ecommerceApi import methods
 import json
 
@@ -19,6 +20,7 @@ class Test(APIView):
 class ProductView(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
+    parser_classes = (MultiPartParser, FormParser)
 
 
 class UserView(viewsets.ModelViewSet):

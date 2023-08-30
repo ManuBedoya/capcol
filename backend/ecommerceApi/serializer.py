@@ -3,6 +3,9 @@ from .models import User, Product
 
 
 class ProductSerializer(serializers.ModelSerializer):
+
+    img = serializers.ImageField(required=False)
+
     class Meta:
         model = Product
         fields = '__all__'
