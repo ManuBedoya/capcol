@@ -6,8 +6,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./containers/Home";
 import Error404 from "./containers/errors/Error404";
 import { DetailProduct } from "./containers/DetailProduct";
-import { Register } from "./containers/Register";
-import { Login } from "./containers/Login";
+/*import { Register } from "./containers/Register";
+import { Login } from "./containers/Login";*/
 
 function App() {
   return (

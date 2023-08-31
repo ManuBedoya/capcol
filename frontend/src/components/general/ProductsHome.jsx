@@ -21,8 +21,6 @@ export default function ProductsHome() {
       })
       .then(function () {});
   }, []);
-
-  console.log(products);
   return (
     <>
       <div className="d-md-flex flex-wrap justify-content-evenly text-center m-2">

@@ -46,7 +46,6 @@ export const ModalDetailProduct = ({
         productData: { id: id, ammount: numProducts },
         userData: aux,
       };
-      console.log(data);
       setShowSpinner(true);
       axios
         .post("http://localhost:8000/api/v1/buyWithOutLogin/", data)

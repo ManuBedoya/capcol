@@ -24,7 +24,6 @@ export const FormAddress = ({ handleSetData } = (a, b) => {}) => {
   }, []);
 
   useEffect(() => {
-    console.log("ingresa a consultar ciudades");
     const dpt = departments.find(
       (department) => department.name === selectValueDepartment
     );

@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import { ModalDetailProduct } from "../components/general/ModalDetailProduct";
 import Layout from "../hocs/Layout";
-import axios from "axios";
 import "./../styles/App.css";
 
 export const DetailProduct = () => {
@@ -43,7 +42,7 @@ export const DetailProduct = () => {
           <Col className="d-flex flex-column">
             <h1 className="text-center">{name}</h1>
             {descriptionAux.map((text) => {
-              return <p>{text}</p>;
+              return <p key={Math.random()}>{text}</p>;
             })}
             <section className="h-100 d-flex flex-column justify-content-end">
               <h2 className="text-md-end">${price}COP</h2>

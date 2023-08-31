@@ -5,15 +5,13 @@ import { Link } from "react-router-dom";
 
 export const NavbarComponent = () => {
   return (
-    <Navbar
-      expand="lg"
-      bg="dark"
-      data-bs-theme="dark"
-      className="d-flex justify-content-between"
-    >
+    <Navbar expand="lg" bg="dark" data-bs-theme="dark" className="d-flex">
       <Link to="/" className="d-flex" style={{ textDecoration: "none" }}>
         <Image src="./images/logo.png" roundedCircle height={50} width={50} />
         <Navbar.Brand className="p-2">CAPCOL</Navbar.Brand>
+      </Link>
+      <Link to={"/"}>
+        <Button variant="">Inicio</Button>
       </Link>
       {/* <div>
         <Link to={"/login"}>
