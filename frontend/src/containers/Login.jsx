@@ -4,6 +4,7 @@ import { Container, Button } from "react-bootstrap";
 import swal from "sweetalert";
 import axios from "axios";
 import bcrypt from "bcryptjs";
+import "./../styles/App.css";
 
 export const Login = () => {
   let credentials = {
@@ -31,7 +32,7 @@ export const Login = () => {
   };
   return (
     <Layout>
-      <Container className="d-flex flex-column w-25 mb-5 mt-5">
+      <Container className="d-flex flex-column w-25 mb-5 mt-5 container-login">
         <h2 className="mb-5 text-center">Iniciar Sesion</h2>
         <FormCustomerCredential handleSetData={handleSetData} />
         <Button className="" onClick={handleBtnSigIn}>

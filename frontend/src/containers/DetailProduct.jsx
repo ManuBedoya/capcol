@@ -4,6 +4,7 @@ import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import { ModalDetailProduct } from "../components/general/ModalDetailProduct";
 import Layout from "../hocs/Layout";
 import axios from "axios";
+import "./../styles/App.css";
 
 export const DetailProduct = () => {
   const { state } = useLocation();
@@ -12,6 +13,7 @@ export const DetailProduct = () => {
   const [numProducts, setNumProducts] = useState(1);
 
   const { name, description, price, img, ammount } = state;
+  let descriptionAux = description.split("\n");
 
   const handleShow = () => setShow(!show);
 
@@ -35,12 +37,14 @@ export const DetailProduct = () => {
       />
       <Container className="mt-5">
         <Row>
-          <Col md xs={12}>
-            <Image src={img} width={"100%"}></Image>
+          <Col md={12} xs={12}>
+            <Image src={img} className="img-detail-product mb-5"></Image>
           </Col>
           <Col className="d-flex flex-column">
             <h1 className="text-center">{name}</h1>
-            <p>{description}</p>
+            {descriptionAux.map((text) => {
+              return <p>{text}</p>;
+            })}
             <section className="h-100 d-flex flex-column justify-content-end">
               <h2 className="text-md-end">${price}COP</h2>
               <h6 className="text-md-end">Cantidad: </h6>

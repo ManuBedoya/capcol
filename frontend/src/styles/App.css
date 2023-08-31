@@ -13,6 +13,33 @@
   }
 }
 
+/* Responsive to xs and sm */
+@media (max-width: 767px) {
+  .temp {
+    color: blue;
+  }
+
+  .img-detail-product {
+    width: 100%;
+  }
+}
+
+/* Responsive to md */
+@media (min-width: 768px) {
+  .temp {
+    color: pink;
+  }
+  .img-detail-product {
+    width: 50%;
+    display: block;
+    margin: auto;
+  }
+
+  .container-login {
+    min-height: 70vh;
+  }
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

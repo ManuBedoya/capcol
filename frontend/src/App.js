@@ -19,7 +19,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/detail-product" element={<DetailProduct />} />
           {/* <Route exact path="/register" element={<Register />} />
-          <Route exact path="/login" element={<Login />} /> */}
+          <Route exact path="/login" element={<Login />} />*/}
         </Routes>
       </Router>
     </Provider>
