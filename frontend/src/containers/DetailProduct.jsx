@@ -13,7 +13,6 @@ export const DetailProduct = () => {
   const [numProducts, setNumProducts] = useState(1);
   const [variantSelected, setVariantSelected] = useState();
 
-  console.log(variantSelected);
   let descriptionAux = description.split("\n");
 
   const handleShow = () => setShow(!show);
@@ -41,7 +40,7 @@ export const DetailProduct = () => {
         numProducts={numProducts}
         applyVariants={applyVariants}
         variant={variantSelected}
-        tagVariant={variants.split(",")[0]}
+        variants={variants}
       />
       <Container className="mt-5">
         <Row>

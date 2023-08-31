@@ -14,7 +14,6 @@ export default function ProductsHome() {
       .get("http://localhost:8000/api/v1/products/")
       .then(function (response) {
         const { data } = response;
-        console.log(data);
         setProducts(data);
       })
       .catch(function (error) {

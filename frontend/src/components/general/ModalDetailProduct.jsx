@@ -13,7 +13,7 @@ export const ModalDetailProduct = ({
   numProducts,
   applyVariants,
   variant,
-  tagVariant,
+  variants,
 }) => {
   const navigate = useNavigate();
   const [showSpinner, setShowSpinner] = useState(false);
@@ -101,7 +101,7 @@ export const ModalDetailProduct = ({
                 </p>
                 {applyVariants ? (
                   <p>
-                    <strong>{tagVariant}: </strong> {variant}
+                    <strong>{variants.split(",")[0]}: </strong> {variant}
                   </p>
                 ) : (
                   <></>
