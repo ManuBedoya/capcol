@@ -9,7 +9,6 @@ export const DetailProduct = () => {
   const { state } = useLocation();
   const { name, description, price, img, ammount, applyVariants, variants } =
     state;
-
   const [show, setShow] = useState(false);
   const [numProducts, setNumProducts] = useState(1);
   const [variantSelected, setVariantSelected] = useState();
@@ -65,7 +64,9 @@ export const DetailProduct = () => {
               />
               {applyVariants ? (
                 <>
-                  <h6 className="text-md-end">{variants.split(",")[0]}: </h6>
+                  <h6 className="text-md-end">
+                    {variants.split(",").shift()}:{" "}
+                  </h6>
                   <Form.Select
                     aria-label="Default select example"
                     className="align-self-md-end mb-2 w-25"
@@ -73,11 +74,13 @@ export const DetailProduct = () => {
                     value={variantSelected}
                   >
                     {variants.split(",").map((variantAux, idx) => {
-                      return (
-                        <option key={Math.random()} hidden={idx === 0}>
-                          {variantAux}
-                        </option>
-                      );
+                      {
+                        return idx != 0 ? (
+                          <option key={Math.random()}>{variantAux}</option>
+                        ) : (
+                          <></>
+                        );
+                      }
                     })}
                   </Form.Select>
                 </>
