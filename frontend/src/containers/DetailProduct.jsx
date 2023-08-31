@@ -1,17 +1,20 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Container, Row, Col, Image, Button } from "react-bootstrap";
+import { Container, Row, Col, Image, Button, Form } from "react-bootstrap";
 import { ModalDetailProduct } from "../components/general/ModalDetailProduct";
 import Layout from "../hocs/Layout";
 import "./../styles/App.css";
 
 export const DetailProduct = () => {
   const { state } = useLocation();
+  const { name, description, price, img, ammount, applyVariants, variants } =
+    state;
 
   const [show, setShow] = useState(false);
   const [numProducts, setNumProducts] = useState(1);
+  const [variantSelected, setVariantSelected] = useState();
 
-  const { name, description, price, img, ammount } = state;
+  console.log(variantSelected);
   let descriptionAux = description.split("\n");
 
   const handleShow = () => setShow(!show);
@@ -26,6 +29,10 @@ export const DetailProduct = () => {
     }
   };
 
+  const handleSetFormSelect = (e) => {
+    setVariantSelected(e.target.value);
+  };
+
   return (
     <Layout>
       <ModalDetailProduct
@@ -33,6 +40,9 @@ export const DetailProduct = () => {
         show={show}
         handleShow={handleShow}
         numProducts={numProducts}
+        applyVariants={applyVariants}
+        variant={variantSelected}
+        tagVariant={variants.split(",")[0]}
       />
       <Container className="mt-5">
         <Row>
@@ -51,8 +61,29 @@ export const DetailProduct = () => {
                 type="number"
                 value={numProducts}
                 onChange={(e) => handleNumProducts(e)}
-                className="align-self-md-end mb-2 text-md-end"
+                className="align-self-md-end mb-2 text-md-end w-25"
               />
+              {applyVariants ? (
+                <>
+                  <h6 className="text-md-end">{variants.split(",")[0]}: </h6>
+                  <Form.Select
+                    aria-label="Default select example"
+                    className="align-self-md-end mb-2 w-25"
+                    onChange={(e) => handleSetFormSelect(e)}
+                    value={variantSelected}
+                  >
+                    {variants.split(",").map((variantAux, idx) => {
+                      return (
+                        <option key={Math.random()} hidden={idx === 0}>
+                          {variantAux}
+                        </option>
+                      );
+                    })}
+                  </Form.Select>
+                </>
+              ) : (
+                <></>
+              )}
 
               <div className="d-flex justify-content-md-end">
                 <Button

@@ -11,6 +11,9 @@ export const ModalDetailProduct = ({
   show,
   handleShow,
   numProducts,
+  applyVariants,
+  variant,
+  tagVariant,
 }) => {
   const navigate = useNavigate();
   const [showSpinner, setShowSpinner] = useState(false);
@@ -46,6 +49,9 @@ export const ModalDetailProduct = ({
         productData: { id: id, ammount: numProducts },
         userData: aux,
       };
+      if (applyVariants) {
+        data.productData.variant = variant;
+      }
       setShowSpinner(true);
       axios
         .post("http://localhost:8000/api/v1/buyWithOutLogin/", data)
@@ -93,6 +99,13 @@ export const ModalDetailProduct = ({
                   <strong>Unidad(es): </strong>
                   {numProducts}
                 </p>
+                {applyVariants ? (
+                  <p>
+                    <strong>{tagVariant}: </strong> {variant}
+                  </p>
+                ) : (
+                  <></>
+                )}
                 <p>
                   <strong>Valor: </strong>${numProducts * price}
                 </p>
