@@ -5,13 +5,14 @@ import Row from "react-bootstrap/Row";
 import { useState, useEffect, React } from "react";
 import axios from "axios";
 import "./../../styles/App.css";
+import { urlGetProducts } from "../../constants/constants";
 
 export default function ProductsHome() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/v1/products/")
+      .get(urlGetProducts)
       .then(function (response) {
         const { data } = response;
         setProducts(data);

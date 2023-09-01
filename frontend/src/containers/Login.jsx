@@ -1,6 +1,7 @@
 import Layout from "../hocs/Layout";
 import { FormCustomerCredential } from "../components/general/formDataCustomer/FormCustomerCredential";
 import { Container, Button } from "react-bootstrap";
+import { urlLogin } from "../constants/constants";
 import swal from "sweetalert";
 import axios from "axios";
 import bcrypt from "bcryptjs";
@@ -18,16 +19,14 @@ export const Login = () => {
 
   const handleBtnSigIn = () => {
     if ((credentials.password && credentials.username) !== "") {
-      axios
-        .get("http://localhost:8000/api/v1/getUser/" + credentials.username)
-        .then((response) => {
-          const { data } = response;
-          if (bcrypt.compareSync(credentials.password, data.password)) {
-            swal(`Iniciaste Sesion`, "", "success");
-          } else {
-            swal(`Credenciales incorrectas`, "", "error");
-          }
-        });
+      axios.get(urlLogin + credentials.username).then((response) => {
+        const { data } = response;
+        if (bcrypt.compareSync(credentials.password, data.password)) {
+          swal(`Iniciaste Sesion`, "", "success");
+        } else {
+          swal(`Credenciales incorrectas`, "", "error");
+        }
+      });
     }
   };
   return (

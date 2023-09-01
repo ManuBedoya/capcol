@@ -1,7 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { FormDataCustomer } from "./formDataCustomer/FormDataCustomer";
 import { Modal, Button, Spinner } from "react-bootstrap";
-import { confirmBuyMessages } from "../../constants/constants";
+import {
+  urlBuyWithOutLogin,
+  confirmBuyMessages,
+  emptyFields,
+  errorGenerateOrder,
+} from "../../constants/constants";
 import swal from "sweetalert";
 import axios from "axios";
 import { useState } from "react";
@@ -54,8 +59,8 @@ export const ModalDetailProduct = ({
       }
       setShowSpinner(true);
       axios
-        .post("http://localhost:8000/api/v1/buyWithOutLogin/", data)
-        .then((response) => {
+        .post(urlBuyWithOutLogin, data)
+        .then(() => {
           setShowSpinner(false);
           swal(
             confirmBuyMessages.title,
@@ -68,14 +73,10 @@ export const ModalDetailProduct = ({
         })
         .catch((e) => {
           setShowSpinner(false);
-          swal(
-            "Error al generar el pedido, revise nuevamente los campos e intentelo de nuevo",
-            "",
-            "error"
-          );
+          swal(errorGenerateOrder, "", "error");
         });
     } else {
-      swal("Campos vacios", "", "error");
+      swal(emptyFields, "", "error");
     }
   };
 

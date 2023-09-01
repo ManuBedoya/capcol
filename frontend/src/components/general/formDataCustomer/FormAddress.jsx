@@ -1,6 +1,9 @@
 import { Form, Row } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { chooseDepartmentMessage } from "../../../constants/constants";
+import {
+  chooseDepartmentMessage,
+  urlDepartments,
+} from "../../../constants/constants";
 import axios from "axios";
 
 export const FormAddress = ({ handleSetData } = (a, b) => {}) => {
@@ -15,7 +18,7 @@ export const FormAddress = ({ handleSetData } = (a, b) => {}) => {
   //UseEffects
   useEffect(() => {
     axios
-      .get("https://api-colombia.com/api/v1/Department")
+      .get(urlDepartments)
       .then((response) => {
         const { data } = response;
         setDepartments(data);
@@ -28,20 +31,19 @@ export const FormAddress = ({ handleSetData } = (a, b) => {}) => {
       (department) => department.name === selectValueDepartment
     );
     if (dpt !== undefined) {
-      axios
-        .get(`https://api-colombia.com/api/v1/Department/${dpt.id}/cities`)
-        .then((response) => {
-          const { data } = response;
-          setCities(data);
-        });
+      axios.get(`${urlDepartments}/${dpt.id}/cities`).then((response) => {
+        const { data } = response;
+        setCities(data);
+      });
     }
   }, [selectValueDepartment, departments]);
 
   //methods
   const handleChanged = (e) => {
-    setSelectValueDepartment(e.target.value);
-    handleSetData("department", e.target.value);
-    if (e.target.value !== chooseDepartmentMessage) {
+    let value = e.target.value;
+    setSelectValueDepartment(value);
+    handleSetData("department", value);
+    if (value !== chooseDepartmentMessage) {
       setVisible(false);
     } else {
       setVisible(true);

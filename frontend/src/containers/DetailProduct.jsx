@@ -7,8 +7,10 @@ import "./../styles/App.css";
 
 export const DetailProduct = () => {
   const { state } = useLocation();
+
   const { name, description, price, img, ammount, applyVariants, variants } =
     state;
+
   const [show, setShow] = useState(false);
   const [numProducts, setNumProducts] = useState(1);
   const [variantSelected, setVariantSelected] = useState();
@@ -18,12 +20,9 @@ export const DetailProduct = () => {
   const handleShow = () => setShow(!show);
 
   const handleNumProducts = (e) => {
-    if (
-      e.target.value <= ammount &&
-      e.target.value !== "" &&
-      e.target.value > 0
-    ) {
-      setNumProducts(e.target.value);
+    let value = e.target.value;
+    if (value <= ammount && value !== "" && value > 0) {
+      setNumProducts(value);
     }
   };
 
