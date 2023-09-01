@@ -6,6 +6,8 @@ django-environ==0.10.0
 djangorestframework==3.14.0
 environ==1.0
 ez-setup==0.9
+gunicorn==21.2.0
+packaging==23.1
 Pillow==9.5.0
 psycopg2==2.9.4
 pytz==2023.3
