@@ -1,3 +1,5 @@
+const baseUrlBackend = process.env.REACT_APP_BASE_URL_BACKEND;
+
 /* ------------------------------------------------------------------
                   URLS TO SOCIAL MEDIA
 ----------------------------------------------------------------------*/
@@ -8,10 +10,9 @@ export const url_gmail =
 /* ------------------------------------------------------------------
                   URLS TO API BACKEND
 ----------------------------------------------------------------------*/
-export const urlLogin = "http://localhost:8000/api/v1/getUser/";
-export const urlBuyWithOutLogin =
-  "http://localhost:8000/api/v1/buyWithOutLogin/";
-export const urlGetProducts = "http://localhost:8000/api/v1/products/";
+export const urlLogin = baseUrlBackend + "api/v1/getUser/";
+export const urlBuyWithOutLogin = baseUrlBackend + "api/v1/buyWithOutLogin/";
+export const urlGetProducts = baseUrlBackend + "api/v1/products/";
 
 /* ------------------------------------------------------------------
                   URLS TO EXTERNAL APIs
