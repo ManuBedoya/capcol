@@ -6,6 +6,7 @@ from django.conf import settings
 def sendEmailBuy(data):
 
     # Email To Customer
+    title = 'Gracias por confiar en CapCol - Revision de tu pedido'
     subject = 'Estamos revisando tu pedido'
     template = get_template('buyPendingEmail.html')
 
@@ -14,9 +15,9 @@ def sendEmailBuy(data):
     })
 
     message = EmailMultiAlternatives(subject,
-                                     "Test",
+                                     title,
                                      settings.EMAIL_HOST_USER,
-                                     ["manuelfernandobedoya@gmail.com"])
+                                     [data['userData']['email']])
 
     message.attach_alternative(content, 'text/html')
     message.send()
