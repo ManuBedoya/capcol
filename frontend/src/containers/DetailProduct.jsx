@@ -73,7 +73,7 @@ export const DetailProduct = () => {
                   >
                     {variants.split(",").map((variantAux, idx) => {
                       {
-                        return idx != 0 ? (
+                        return idx !== 0 ? (
                           <option key={Math.random()}>{variantAux}</option>
                         ) : (
                           <></>
