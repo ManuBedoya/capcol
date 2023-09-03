@@ -15,6 +15,7 @@ export default function ProductsHome() {
       .get(urlGetProducts)
       .then(function (response) {
         const { data } = response;
+        console.log(data);
         setProducts(data);
       })
       .catch(function (error) {
