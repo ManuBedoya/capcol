@@ -18,7 +18,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG") not in os.environ
 
-ALLOWED_HOSTS = ['https://beautiful-toffee-f9fb2d.netlify.app']
+ALLOWED_HOSTS = ['https://capcol.netlify.app']
 
 RENDER_EXTERNAL_HOSTNAME = env('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
@@ -146,7 +146,7 @@ ALLOWED_HOSTS = ['*']
 
 CORS_ORIGIN_WHITELIST = ('http://localhost:3000',
                          'http://127.0.0.1:3000',
-                         'https://beautiful-toffee-f9fb2d.netlify.app')
+                         'https://capcol.netlify.app')
 
 # Configuration to send EMAILS
 
