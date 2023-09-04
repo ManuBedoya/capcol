@@ -89,7 +89,7 @@ export const DetailProduct = () => {
               <div className="d-flex justify-content-md-end">
                 <Button
                   variant="success"
-                  className="w-md-25"
+                  className="w-md-25 mb-5"
                   onClick={handleShow}
                 >
                   Realizar Pedido
@@ -99,7 +99,7 @@ export const DetailProduct = () => {
           </Col>
         </Row>
         <Row className="">
-          <Col>Comentarios</Col>
+          <Col>{/*  Comentarios */}</Col>
         </Row>
       </Container>
     </Layout>
