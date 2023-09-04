@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+import { Card, Col, Row, InputGroup, Form, Container } from "react-bootstrap";
 import { useState, useEffect, React } from "react";
 import axios from "axios";
 import "./../../styles/App.css";
@@ -9,6 +7,11 @@ import { urlGetProducts } from "../../constants/constants";
 
 export default function ProductsHome() {
   const [products, setProducts] = useState([]);
+  const [productSearch, setProductSearch] = useState("");
+
+  const handleSearch = (e) => {
+    setProductSearch(e.target.value);
+  };
 
   useEffect(() => {
     axios
@@ -24,6 +27,17 @@ export default function ProductsHome() {
   }, []);
   return (
     <>
+      <Container className="mt-3 mb-3">
+        <InputGroup className="mb-3">
+          <Form.Control
+            placeholder="Buscar Producto"
+            aria-label="Buscar Producto"
+            aria-describedby="basic-addon2"
+            onChange={(e) => handleSearch(e)}
+          />
+        </InputGroup>
+      </Container>
+
       <div className="d-md-flex flex-wrap justify-content-evenly text-center m-2">
         {products.map(
           ({
@@ -36,7 +50,8 @@ export default function ProductsHome() {
             applyVariants,
             variants,
           }) => {
-            return (
+            return productSearch === "" ||
+              name.toLowerCase().includes(productSearch.toLowerCase()) ? (
               <Card
                 key={id}
                 className="m-auto mb-5"
@@ -71,6 +86,8 @@ export default function ProductsHome() {
                   </Col>
                 </Row>
               </Card>
+            ) : (
+              <></>
             );
           }
         )}
