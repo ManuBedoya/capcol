@@ -11,7 +11,7 @@ export const NavbarComponent = () => {
         <Navbar.Brand className="p-2">CAPCOL</Navbar.Brand>
       </Link>
       <Link to={"/"}>
-        <Button variant="">Inicio</Button>
+        <Button variant="">Productos</Button>
       </Link>
       {/* <div>
         <Link to={"/login"}>

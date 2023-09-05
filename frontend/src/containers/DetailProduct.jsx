@@ -4,6 +4,7 @@ import { Container, Row, Col, Image, Button, Form } from "react-bootstrap";
 import { ModalDetailProduct } from "../components/general/ModalDetailProduct";
 import Layout from "../hocs/Layout";
 import "./../styles/App.css";
+import { CarrouselImages } from "../components/general/CarrouselImages";
 
 export const DetailProduct = () => {
   const { state } = useLocation();
@@ -44,7 +45,7 @@ export const DetailProduct = () => {
       <Container className="mt-5">
         <Row>
           <Col md={12} xs={12}>
-            <Image src={img} className="img-detail-product mb-5"></Image>
+            <CarrouselImages img={img} />
           </Col>
           <Col className="d-flex flex-column">
             <h1 className="text-center">{name}</h1>

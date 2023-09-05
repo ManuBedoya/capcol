@@ -59,7 +59,11 @@ export default function ProductsHome() {
               >
                 <Row>
                   <Col>
-                    <Card.Img variant="top" src={img} height="450px" />
+                    <Card.Img
+                      variant="top"
+                      src={img.split(",")[0]}
+                      height="450px"
+                    />
                   </Col>
                 </Row>
                 <Row>
