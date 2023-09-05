@@ -18,9 +18,20 @@
   .temp {
     color: blue;
   }
-
   .img-detail-product {
     width: 100%;
+  }
+  .custom-card {
+    background-color: #61dafb;
+  }
+  .container-wpp {
+    position: relative;
+    display: flex;
+    width: 100%;
+    left: 0;
+    z-index: 1;
+  }
+  .text-wpp {
   }
 }
 
@@ -37,6 +48,14 @@
 
   .container-login {
     min-height: 70vh;
+  }
+  .custom-card {
+  }
+  .container-wpp {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1;
   }
 }
 

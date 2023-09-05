@@ -1,5 +1,6 @@
 import Layout from "../hocs/Layout";
 import ProductsHome from "../components/general/ProductsHome";
+import { BtnWpp } from "../components/general/BtnWpp";
 
 const Home = () => {
   return (

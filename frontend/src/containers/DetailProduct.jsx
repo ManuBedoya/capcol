@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Container, Row, Col, Image, Button, Form } from "react-bootstrap";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { ModalDetailProduct } from "../components/general/ModalDetailProduct";
 import Layout from "../hocs/Layout";
 import "./../styles/App.css";
 import { CarrouselImages } from "../components/general/CarrouselImages";
+import { BtnWpp } from "../components/general/BtnWpp";
 
 export const DetailProduct = () => {
   const { state } = useLocation();

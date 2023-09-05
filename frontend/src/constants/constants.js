@@ -5,7 +5,7 @@ const baseUrlBackend = process.env.REACT_APP_BASE_URL_BACKEND;
 ----------------------------------------------------------------------*/
 export const url_gmail =
   "https://mail.google.com/mail/u/0/?fs=1&to=manuelfernandobedoya@gmail.com&su=<RAZONDELCORREO>&body=<DETALLECORREO>&tf=cm";
-export const url_wpp = "https://wa.link/bk3xvr";
+export const url_wpp = "https://wa.link/r0dn6n";
 
 /* ------------------------------------------------------------------
                   URLS TO API BACKEND
