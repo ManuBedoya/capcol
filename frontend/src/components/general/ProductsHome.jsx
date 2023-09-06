@@ -28,7 +28,7 @@ export default function ProductsHome() {
   }, []);
   return (
     <>
-      <Container className="mt-3 mb-3">
+      <Container className="mt-3 mt-md-5 pt-md-5">
         <InputGroup className="mb-3">
           <Form.Control
             placeholder="Buscar Producto"

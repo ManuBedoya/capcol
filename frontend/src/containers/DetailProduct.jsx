@@ -48,7 +48,7 @@ export const DetailProduct = () => {
           variant={variantSelected}
           variants={variants}
         />
-        <Container className="mt-5">
+        <Container className="mt-md-5 pt-md-5">
           <Row>
             <Col md={12} xs={12}>
               <CarrouselImages img={img} />

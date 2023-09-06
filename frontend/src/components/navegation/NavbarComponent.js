@@ -5,7 +5,12 @@ import { Link } from "react-router-dom";
 
 export const NavbarComponent = () => {
   return (
-    <Navbar expand="lg" bg="dark" data-bs-theme="dark" className="d-flex">
+    <Navbar
+      expand="lg"
+      bg="dark"
+      data-bs-theme="dark"
+      className="d-flex fixed-top"
+    >
       <Link to="/" className="d-flex" style={{ textDecoration: "none" }}>
         <Image src="./images/logo.png" roundedCircle height={50} width={50} />
         <Navbar.Brand className="p-2">CAPCOL</Navbar.Brand>
