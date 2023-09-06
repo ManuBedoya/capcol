@@ -1,12 +1,18 @@
 import Layout from "../hocs/Layout";
 import ProductsHome from "../components/general/ProductsHome";
-import { BtnWpp } from "../components/general/BtnWpp";
+import { motion } from "framer-motion";
 
 const Home = () => {
   return (
-    <Layout>
-      <ProductsHome />
-    </Layout>
+    <motion.main
+      className="main__container"
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <Layout>
+        <ProductsHome />
+      </Layout>
+    </motion.main>
   );
 };
 
