@@ -58,6 +58,9 @@
     right: 10px;
     z-index: 1;
   }
+  .w-md-30 {
+    width: 30%;
+  }
 }
 
 .App-header {

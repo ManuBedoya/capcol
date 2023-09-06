@@ -4,7 +4,6 @@ import { useState, useEffect, React } from "react";
 import axios from "axios";
 import "./../../styles/App.css";
 import { urlGetProducts } from "../../constants/constants";
-import { motion } from "framer-motion";
 
 export default function ProductsHome() {
   const [products, setProducts] = useState([]);
@@ -37,65 +36,66 @@ export default function ProductsHome() {
             onChange={(e) => handleSearch(e)}
           />
         </InputGroup>
+
+        <div className="d-md-flex flex-wrap justify-content-evenly text-center m-2">
+          {products.map(
+            ({
+              id,
+              name,
+              img,
+              description,
+              price,
+              ammount,
+              applyVariants,
+              variants,
+            }) => {
+              return productSearch === "" ||
+                name.toLowerCase().includes(productSearch.toLowerCase()) ? (
+                <Card
+                  key={id}
+                  className="m-auto mb-5 w-md-30"
+                  style={{ height: "600px" }}
+                >
+                  <Row>
+                    <Col>
+                      <Card.Img
+                        variant="top"
+                        src={img.split(",")[0]}
+                        height="450px"
+                      />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <Card.Body>
+                        <Card.Title>{name}</Card.Title>
+                        <Link
+                          to={"/detail-product"}
+                          state={{
+                            id: id,
+                            name: name,
+                            img: img,
+                            description: description,
+                            price: price,
+                            ammount: ammount,
+                            applyVariants: applyVariants,
+                            variants: variants,
+                          }}
+                          className="btn btn-info position-absolute bottom-0 start-0 m-2"
+                        >
+                          Ver Producto
+                        </Link>
+                      </Card.Body>
+                    </Col>
+                  </Row>
+                </Card>
+              ) : (
+                <></>
+              );
+            }
+          )}
+        </div>
       </Container>
-      <div className="d-md-flex flex-wrap justify-content-evenly text-center m-2">
-        {products.map(
-          ({
-            id,
-            name,
-            img,
-            description,
-            price,
-            ammount,
-            applyVariants,
-            variants,
-          }) => {
-            return productSearch === "" ||
-              name.toLowerCase().includes(productSearch.toLowerCase()) ? (
-              <Card
-                key={id}
-                className="m-auto mb-5"
-                style={{ height: "600px" }}
-              >
-                <Row>
-                  <Col>
-                    <Card.Img
-                      variant="top"
-                      src={img.split(",")[0]}
-                      height="450px"
-                    />
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <Card.Body>
-                      <Card.Title>{name}</Card.Title>
-                      <Link
-                        to={"/detail-product"}
-                        state={{
-                          id: id,
-                          name: name,
-                          img: img,
-                          description: description,
-                          price: price,
-                          ammount: ammount,
-                          applyVariants: applyVariants,
-                          variants: variants,
-                        }}
-                        className="btn btn-info position-absolute bottom-0 start-0 m-2"
-                      >
-                        Ver Producto
-                      </Link>
-                    </Card.Body>
-                  </Col>
-                </Row>
-              </Card>
-            ) : (
-              <></>
-            );
-          }
-        )}
-      </div>
     </>
   );
 }
