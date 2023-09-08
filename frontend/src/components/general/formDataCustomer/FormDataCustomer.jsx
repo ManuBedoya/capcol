@@ -33,7 +33,7 @@ export const FormDataCustomer = ({ handleSetData } = (a, b) => {}) => {
           </Form.Group>
         </Col>
         <Col>
-          <Form.Group className="mb-3" controlId="phone">
+          <Form.Group className="mb-3" controlId="documentId">
             <Form.Label>Documento de identidad</Form.Label>
             <Form.Control
               type="number"

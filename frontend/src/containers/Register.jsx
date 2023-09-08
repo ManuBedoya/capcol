@@ -64,7 +64,7 @@ export const Register = () => {
 
   return (
     <Layout>
-      <Container className="mb-5 mt-5">
+      <Container className="mb-5 mt-md-5 pt-md-3">
         <h2>Datos Personales</h2>
         <FormDataCustomer handleSetData={handleSetData} />
         <h2>Creacion de Usuario</h2>

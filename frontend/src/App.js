@@ -4,8 +4,8 @@ import Home from "./containers/Home";
 import Error404 from "./containers/errors/Error404";
 import { DetailProduct } from "./containers/DetailProduct";
 import { AnimatePresence } from "framer-motion";
-/*import { Register } from "./containers/Register";
-import { Login } from "./containers/Login";*/
+import { Register } from "./containers/Register";
+/*import { Login } from "./containers/Login";*/
 
 function App() {
   const location = useLocation();
@@ -18,8 +18,8 @@ function App() {
 
         {/* Error Display*/}
 
-        {/* <Route exact path="/register" element={<Register />} />
-          <Route exact path="/login" element={<Login />} />*/}
+        <Route exact path="/register" element={<Register />} />
+        {/*  <Route exact path="/login" element={<Login />} />*/}
       </Routes>
     </AnimatePresence>
   );
