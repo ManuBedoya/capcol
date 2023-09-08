@@ -14,7 +14,7 @@ function App() {
       <Routes location={location} key={location.pathname}>
         <Route path="*" element={<Error404 />} />
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/detail-product" element={<DetailProduct />} />
+        <Route exact path="/detail-product/:id" element={<DetailProduct />} />
 
         {/* Error Display*/}
 

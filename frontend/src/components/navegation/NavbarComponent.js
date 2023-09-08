@@ -12,7 +12,7 @@ export const NavbarComponent = () => {
       className="d-flex fixed-top"
     >
       <Link to="/" className="d-flex" style={{ textDecoration: "none" }}>
-        <Image src="./images/logo.png" roundedCircle height={50} width={50} />
+        <Image src="../images/logo.png" roundedCircle height={50} width={50} />
         <Navbar.Brand className="p-2">CAPCOL</Navbar.Brand>
       </Link>
       <Link to={"/"}>

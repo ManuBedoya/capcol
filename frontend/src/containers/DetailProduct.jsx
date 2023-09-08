@@ -1,29 +1,35 @@
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { ModalDetailProduct } from "../components/general/ModalDetailProduct";
 import Layout from "../hocs/Layout";
 import "./../styles/App.css";
 import { CarrouselImages } from "../components/general/CarrouselImages";
 import { motion } from "framer-motion";
+import axios from "axios";
+import { urlGetProducts } from "../constants/constants";
 
 export const DetailProduct = () => {
-  const { state } = useLocation();
-
-  const { name, description, price, img, ammount, applyVariants, variants } =
-    state;
-
   const [show, setShow] = useState(false);
   const [numProducts, setNumProducts] = useState(1);
   const [variantSelected, setVariantSelected] = useState();
+  const [productData, setProductData] = useState({
+    name: "",
+    description: "",
+    price: 0.0,
+    img: "",
+    ammount: 0,
+    applyVariants: false,
+    variants: "",
+  });
 
-  let descriptionAux = description.split("\n");
+  const { id } = useParams();
 
   const handleShow = () => setShow(!show);
 
   const handleNumProducts = (e) => {
     let value = e.target.value;
-    if (value <= ammount && value !== "" && value > 0) {
+    if (value <= productData["ammount"] && value !== "" && value > 0) {
       setNumProducts(value);
     }
   };
@@ -31,6 +37,19 @@ export const DetailProduct = () => {
   const handleSetFormSelect = (e) => {
     setVariantSelected(e.target.value);
   };
+
+  useEffect(() => {
+    axios
+      .get(urlGetProducts + id)
+      .then((response) => {
+        const { data } = response;
+        console.log(data);
+        setProductData(data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, [id]);
 
   return (
     <motion.main
@@ -40,26 +59,26 @@ export const DetailProduct = () => {
     >
       <Layout>
         <ModalDetailProduct
-          state={state}
+          state={productData}
           show={show}
           handleShow={handleShow}
           numProducts={numProducts}
-          applyVariants={applyVariants}
+          applyVariants={productData["applyVariants"]}
           variant={variantSelected}
-          variants={variants}
+          variants={productData["variants"]}
         />
         <Container className="mt-md-5 pt-md-5">
           <Row>
             <Col md={12} xs={12}>
-              <CarrouselImages img={img} />
+              <CarrouselImages img={productData["img"]} />
             </Col>
             <Col className="d-flex flex-column">
-              <h1 className="text-center">{name}</h1>
-              {descriptionAux.map((text) => {
+              <h1 className="text-center">{productData["name"]}</h1>
+              {productData["description"].split("\n").map((text) => {
                 return <p key={Math.random()}>{text}</p>;
               })}
               <section className="h-100 d-flex flex-column justify-content-end">
-                <h2 className="text-md-end">${price}COP</h2>
+                <h2 className="text-md-end">${productData["price"]}COP</h2>
                 <h6 className="text-md-end">Cantidad: </h6>
                 <input
                   type="number"
@@ -67,10 +86,10 @@ export const DetailProduct = () => {
                   onChange={(e) => handleNumProducts(e)}
                   className="align-self-md-end mb-2 text-md-end w-25"
                 />
-                {applyVariants ? (
+                {productData["applyVariants"] ? (
                   <>
                     <h6 className="text-md-end">
-                      {variants.split(",").shift()}:{" "}
+                      {productData["variants"].split(",").shift()}:{" "}
                     </h6>
                     <Form.Select
                       aria-label="Default select example"
@@ -78,15 +97,15 @@ export const DetailProduct = () => {
                       onChange={(e) => handleSetFormSelect(e)}
                       value={variantSelected}
                     >
-                      {variants.split(",").map((variantAux, idx) => {
-                        {
+                      {productData["variants"]
+                        .split(",")
+                        .map((variantAux, idx) => {
                           return idx !== 0 ? (
                             <option key={Math.random()}>{variantAux}</option>
                           ) : (
                             <></>
                           );
-                        }
-                      })}
+                        })}
                     </Form.Select>
                   </>
                 ) : (

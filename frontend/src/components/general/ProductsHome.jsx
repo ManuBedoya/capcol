@@ -70,17 +70,7 @@ export default function ProductsHome() {
                       <Card.Body>
                         <Card.Title>{name}</Card.Title>
                         <Link
-                          to={"/detail-product"}
-                          state={{
-                            id: id,
-                            name: name,
-                            img: img,
-                            description: description,
-                            price: price,
-                            ammount: ammount,
-                            applyVariants: applyVariants,
-                            variants: variants,
-                          }}
+                          to={"/detail-product/" + id}
                           className="btn btn-info position-absolute bottom-0 start-0 m-2"
                         >
                           Ver Producto
