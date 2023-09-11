@@ -37,6 +37,9 @@
   .container-buttons-nav {
     display: none;
   }
+  .container-login {
+    min-height: 56vh;
+  }
 }
 
 /* Responsive to md */
@@ -51,7 +54,7 @@
   }
 
   .container-login {
-    min-height: 70vh;
+    min-height: 77vh;
   }
   .custom-card {
   }

@@ -31,7 +31,7 @@ export const Login = () => {
   };
   return (
     <Layout>
-      <Container className="d-flex flex-column w-25 mb-5 mt-5 container-login">
+      <Container className="d-flex flex-column mb-5 mt-5 container-login pt-md-5">
         <h2 className="mb-5 text-center">Iniciar Sesion</h2>
         <FormCustomerCredential handleSetData={handleSetData} />
         <Button className="" onClick={handleBtnSigIn}>
