@@ -6,12 +6,15 @@ import swal from "sweetalert";
 import axios from "axios";
 import bcrypt from "bcryptjs";
 import "./../styles/App.css";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   let credentials = {
     username: "",
     password: "",
   };
+
+  const navigate = useNavigate();
 
   const handleSetData = (key, value) => {
     credentials = { ...credentials, [key]: value };
@@ -23,6 +26,8 @@ export const Login = () => {
         const { data } = response;
         if (bcrypt.compareSync(credentials.password, data.password)) {
           swal(`Iniciaste Sesion`, "", "success");
+          window.localStorage.setItem("user", credentials.username);
+          navigate("/");
         } else {
           swal(`Credenciales incorrectas`, "", "error");
         }
