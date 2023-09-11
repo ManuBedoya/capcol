@@ -7,6 +7,7 @@ import { Button, Container } from "react-bootstrap";
 import swal from "sweetalert";
 import axios from "axios";
 import bcrypt from "bcryptjs";
+import { urlRegister } from "./../constant/constants.js";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ export const Register = () => {
       handleSetData("password", bcrypt.hashSync(aux.password, 8));
       setData(aux);
       axios
-        .post("http://localhost:8000/api/v1/users/", data)
+        .post(urlRegister, data)
         .then((response) => {
           swal("Muy bien, estás registrado", "", "success").then(() => {
             navigate("/login");

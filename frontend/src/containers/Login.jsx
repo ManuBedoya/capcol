@@ -24,12 +24,16 @@ export const Login = () => {
     if ((credentials.password && credentials.username) !== "") {
       axios.get(urlLogin + credentials.username).then((response) => {
         const { data } = response;
-        if (bcrypt.compareSync(credentials.password, data.password)) {
-          swal(`Iniciaste Sesion`, "", "success");
-          window.localStorage.setItem("user", credentials.username);
-          navigate("/");
-        } else {
-          swal(`Credenciales incorrectas`, "", "error");
+        try {
+          if (bcrypt.compareSync(credentials.password, data.password)) {
+            swal(`Iniciaste Sesion`, "", "success");
+            window.localStorage.setItem("user", credentials.username);
+            navigate("/");
+          } else {
+            swal(`Credenciales incorrectas`, "", "error");
+          }
+        } catch (e) {
+          swal("Usuario no regitrado", "", "error");
         }
       });
     }
