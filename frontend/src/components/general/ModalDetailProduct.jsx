@@ -76,6 +76,7 @@ export const ModalDetailProduct = ({
           swal(errorGenerateOrder, "", "error");
         });
     } else {
+      console.log(aux);
       swal(emptyFields, "", "error");
     }
   };

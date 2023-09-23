@@ -12,7 +12,7 @@ export const url_wpp = "https://wa.link/r0dn6n";
 ----------------------------------------------------------------------*/
 export const urlLogin = baseUrlBackend + "api/v1/getUser/";
 export const urlRegister = baseUrlBackend + "api/v1/users/";
-export const urlBuyWithOutLogin = baseUrlBackend + "api/v1/buyWithOutLogin/";
+export const urlBuyWithOutLogin = baseUrlBackend + "api/v1/actions/buy/";
 export const urlGetProducts = baseUrlBackend + "api/v1/products/";
 
 /* ------------------------------------------------------------------

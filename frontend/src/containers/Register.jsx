@@ -7,7 +7,7 @@ import { Button, Container } from "react-bootstrap";
 import swal from "sweetalert";
 import axios from "axios";
 import bcrypt from "bcryptjs";
-import { urlRegister } from "./../constant/constants.js";
+import { urlRegister } from "../constants/constants";
 
 export const Register = () => {
   const navigate = useNavigate();
