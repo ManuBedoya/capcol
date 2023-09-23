@@ -43,7 +43,6 @@ export const DetailProduct = () => {
       .get(urlGetProducts + id)
       .then((response) => {
         const { data } = response;
-        console.log(data);
         setProductData(data);
       })
       .catch((e) => {

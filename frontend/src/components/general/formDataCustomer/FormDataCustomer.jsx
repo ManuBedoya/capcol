@@ -38,7 +38,7 @@ export const FormDataCustomer = ({ handleSetData } = (a, b) => {}) => {
             <Form.Control
               type="number"
               placeholder="Ingrese su numero de identidad"
-              onChange={(e) => handleSetData("id", e.target.value)}
+              onChange={(e) => handleSetData("identification", e.target.value)}
             />
           </Form.Group>
         </Col>

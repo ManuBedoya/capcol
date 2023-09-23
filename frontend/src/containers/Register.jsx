@@ -12,7 +12,7 @@ import { urlRegister } from "../constants/constants";
 export const Register = () => {
   const navigate = useNavigate();
   const [data, setData] = useState({
-    id: "",
+    identification: "",
     name: "",
     phone: "",
     email: "",
@@ -27,7 +27,7 @@ export const Register = () => {
   let aux = data;
   const handleBtnCreate = () => {
     if (
-      (aux.id &&
+      (aux.identification &&
         aux.name &&
         aux.phone &&
         aux.email &&
@@ -40,8 +40,9 @@ export const Register = () => {
     ) {
       handleSetData("password", bcrypt.hashSync(aux.password, 8));
       setData(aux);
+      console.log(aux);
       axios
-        .post(urlRegister, data)
+        .post(urlRegister, aux)
         .then((response) => {
           swal("Muy bien, estás registrado", "", "success").then(() => {
             navigate("/login");
