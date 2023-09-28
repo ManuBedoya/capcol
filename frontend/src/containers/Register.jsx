@@ -7,7 +7,8 @@ import { Button, Container } from "react-bootstrap";
 import swal from "sweetalert";
 import axios from "axios";
 import bcrypt from "bcryptjs";
-import { urlRegister } from "../constants/constants";
+import { SERVICE, urlRegister } from "../constants/constants";
+import { generateNewToken, validateTokenExpired } from "../util/validationJwt";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ export const Register = () => {
   });
 
   let aux = data;
-  const handleBtnCreate = () => {
+  async function handleBtnCreate() {
     if (
       (aux.identification &&
         aux.name &&
@@ -40,9 +41,17 @@ export const Register = () => {
     ) {
       handleSetData("password", bcrypt.hashSync(aux.password, 8));
       setData(aux);
-      console.log(aux);
+      const isExpired = validateTokenExpired();
+      console.log(isExpired);
+      if (isExpired) {
+        //generateNewToken("001", SERVICE, SERVICE);
+      }
       axios
-        .post(urlRegister, aux)
+        .post(
+          urlRegister,
+          { Authorization: window.localStorage.getItem("jwt") },
+          aux
+        )
         .then((response) => {
           swal("Muy bien, estás registrado", "", "success").then(() => {
             navigate("/login");
@@ -59,7 +68,7 @@ export const Register = () => {
     } else {
       swal("Campos vacios", "", "error");
     }
-  };
+  }
   const handleSetData = (key = "", value = "") => {
     aux = { ...aux, [key]: value };
   };

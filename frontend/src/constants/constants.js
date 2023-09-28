@@ -14,6 +14,16 @@ export const urlLogin = baseUrlBackend + "api/v1/users/";
 export const urlRegister = baseUrlBackend + "api/v1/users/";
 export const urlBuyWithOutLogin = baseUrlBackend + "api/v1/actions/buy/";
 export const urlGetProducts = baseUrlBackend + "api/v1/products/";
+export const urlGenerateToken = baseUrlBackend + "api/v1/jwt/generate-token";
+export const urlHealthToken = baseUrlBackend + "api/v1/jwt/health-token";
+
+/* ------------------------------------------------------------------
+                  ROLES
+----------------------------------------------------------------------*/
+
+export const USER = "USER";
+export const ADMIN = "ADMIN";
+export const SERVICE = "SERVICE";
 
 /* ------------------------------------------------------------------
                   URLS TO EXTERNAL APIs
