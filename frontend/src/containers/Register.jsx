@@ -42,16 +42,13 @@ export const Register = () => {
       handleSetData("password", bcrypt.hashSync(aux.password, 8));
       setData(aux);
       const isExpired = validateTokenExpired();
-      console.log(isExpired);
       if (isExpired) {
-        //generateNewToken("001", SERVICE, SERVICE);
+        generateNewToken("001", SERVICE, SERVICE);
       }
       axios
-        .post(
-          urlRegister,
-          { Authorization: window.localStorage.getItem("jwt") },
-          aux
-        )
+        .post(urlRegister, aux, {
+          headers: { Authorization: window.localStorage.getItem("jwt") },
+        })
         .then((response) => {
           swal("Muy bien, estás registrado", "", "success").then(() => {
             navigate("/login");

@@ -10,6 +10,11 @@ import {
 import swal from "sweetalert";
 import axios from "axios";
 import { useState } from "react";
+import {
+  validateTokenExpired,
+  generateNewToken,
+} from "../../util/validationJwt";
+import { SERVICE } from "../../constants/constants";
 
 export const ModalDetailProduct = ({
   state,
@@ -25,7 +30,7 @@ export const ModalDetailProduct = ({
 
   const { id, name, price } = state;
   let aux = {
-    id: "",
+    identification: "",
     name: "",
     phone: "",
     email: "",
@@ -41,7 +46,7 @@ export const ModalDetailProduct = ({
 
   const confirmOrder = () => {
     if (
-      (aux.id &&
+      (aux.identification &&
         aux.name &&
         aux.phone &&
         aux.email &&
@@ -58,8 +63,14 @@ export const ModalDetailProduct = ({
         data.productData.variant = variant;
       }
       setShowSpinner(true);
+      const isExpired = validateTokenExpired();
+      if (isExpired) {
+        generateNewToken("001", SERVICE, SERVICE);
+      }
       axios
-        .post(urlBuyWithOutLogin, data)
+        .post(urlBuyWithOutLogin, data, {
+          headers: { Authorization: window.localStorage.getItem("jwt") },
+        })
         .then(() => {
           setShowSpinner(false);
           swal(

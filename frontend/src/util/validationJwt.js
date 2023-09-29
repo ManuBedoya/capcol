@@ -22,15 +22,11 @@ export async function generateNewToken(identification, role, username) {
 
 export async function validateTokenExpired() {
   const response = axios
-    .get(
-      urlHealthToken,
-      {},
-      {
-        headers: {
-          Authorization: "Bearer " + window.localStorage.getItem("jwt"),
-        },
-      }
-    )
+    .get(urlHealthToken, {
+      headers: {
+        Authorization: window.localStorage.getItem("jwt"),
+      },
+    })
     .then(
       (response) => {
         return false;

@@ -7,6 +7,8 @@ import axios from "axios";
 import bcrypt from "bcryptjs";
 import "./../styles/App.css";
 import { useNavigate } from "react-router-dom";
+import { SERVICE } from "../constants/constants";
+import { validateTokenExpired, generateNewToken } from "../util/validationJwt";
 
 export const Login = () => {
   let credentials = {
@@ -22,20 +24,28 @@ export const Login = () => {
 
   const handleBtnSigIn = () => {
     if ((credentials.password && credentials.username) !== "") {
-      axios.get(urlLogin + credentials.username).then((response) => {
-        const { data } = response;
-        try {
-          if (bcrypt.compareSync(credentials.password, data.password)) {
-            swal(`Iniciaste Sesion`, "", "success");
-            window.localStorage.setItem("user", credentials.username);
-            navigate("/");
-          } else {
-            swal(`Credenciales incorrectas`, "", "error");
+      const isExpired = validateTokenExpired();
+      if (isExpired) {
+        generateNewToken("001", SERVICE, SERVICE);
+      }
+      axios
+        .get(urlLogin + credentials.username, {
+          headers: { Authorization: window.localStorage.getItem("jwt") },
+        })
+        .then((response) => {
+          const { data } = response;
+          try {
+            if (bcrypt.compareSync(credentials.password, data.password)) {
+              swal(`Iniciaste Sesion`, "", "success");
+              window.localStorage.setItem("user", credentials.username);
+              navigate("/");
+            } else {
+              swal(`Credenciales incorrectas`, "", "error");
+            }
+          } catch (e) {
+            swal("Usuario no regitrado", "", "error");
           }
-        } catch (e) {
-          swal("Usuario no regitrado", "", "error");
-        }
-      });
+        });
     }
   };
   return (
