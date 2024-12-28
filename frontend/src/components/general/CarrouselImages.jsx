@@ -6,11 +6,10 @@ export const CarrouselImages = ({ img }) => {
     <>
       <Carousel fade data-bs-theme="dark">
         {imgAux.map((imgActual) => {
-          console.log(imgActual);
           return (
             <Carousel.Item key={imgActual}>
               <Image
-                src={imgActual}
+                src={"../" + imgActual}
                 className="img-detail-product mb-5"
               ></Image>
             </Carousel.Item>

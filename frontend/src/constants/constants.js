@@ -1,4 +1,4 @@
-const baseUrlBackend = process.env.REACT_APP_BASE_URL_BACKEND;
+const baseUrlBackend = process.env.BASE_URL_BACKEND;
 
 /* ------------------------------------------------------------------
                   URLS TO SOCIAL MEDIA
@@ -13,7 +13,7 @@ export const url_wpp = "https://wa.link/r0dn6n";
 export const urlLogin = baseUrlBackend + "api/v1/getUser/";
 export const urlRegister = baseUrlBackend + "api/v1/users/";
 export const urlBuyWithOutLogin = baseUrlBackend + "api/v1/buyWithOutLogin/";
-export const urlGetProducts = baseUrlBackend + "api/v1/products/";
+export const urlGetProducts = "http://localhost:8080/api/v1/products/";
 
 /* ------------------------------------------------------------------
                   URLS TO EXTERNAL APIs
