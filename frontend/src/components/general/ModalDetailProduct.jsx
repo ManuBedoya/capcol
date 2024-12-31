@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { FormDataCustomer } from "./formDataCustomer/FormDataCustomer";
 import { Modal, Button, Spinner } from "react-bootstrap";
 import {
-  urlBuyWithOutLogin,
+  urlBuy,
   confirmBuyMessages,
   emptyFields,
   errorGenerateOrder,
@@ -58,8 +58,9 @@ export const ModalDetailProduct = ({
         data.productData.variant = variant;
       }
       setShowSpinner(true);
+      console.log(data);
       axios
-        .post(urlBuyWithOutLogin, data)
+        .post(urlBuy, data)
         .then(() => {
           setShowSpinner(false);
           swal(

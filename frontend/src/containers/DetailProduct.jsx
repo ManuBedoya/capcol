@@ -78,13 +78,13 @@ export const DetailProduct = () => {
                 return <p key={Math.random()}>{text}</p>;
               })}
               <section className="h-100 d-flex flex-column justify-content-end">
-                <h2 className="text-md-end">${productData["price"]}COP</h2>
-                <h6 className="text-md-end">Cantidad: </h6>
+                <h2 className="text-md-center">${productData["price"]}COP</h2>
+                <h6 className="text-md-center">Cantidad: </h6>
                 <input
                   type="number"
                   value={numProducts}
                   onChange={(e) => handleNumProducts(e)}
-                  className="align-self-md-end mb-2 text-md-end w-25"
+                  className="align-self-md-center mb-2 text-md-end w-25"
                 />
                 {productData["applyVariants"] ? (
                   <>
@@ -112,7 +112,7 @@ export const DetailProduct = () => {
                   <></>
                 )}
 
-                <div className="d-flex justify-content-md-end">
+                <div className="d-flex justify-content-md-center">
                   <Button
                     variant="success"
                     className="w-md-25 mb-5"
