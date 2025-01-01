@@ -34,8 +34,7 @@ export const NavbarComponent = () => {
           <Button variant="">Productos</Button>
         </Link>
       </div>
-
-      <div className="container-buttons-nav">
+{/**<div className="container-buttons-nav">
         {window.localStorage.getItem("user") ? (
           <>
             <h3 style={{ color: "white", display: "inline", margin: "10px" }}>
@@ -47,7 +46,7 @@ export const NavbarComponent = () => {
           </>
         ) : (
           <>
-            <Link to={"/login"}>
+           <Link to={"/login"}>
               <Button variant="outline-primary">Iniciar sesion</Button>
             </Link>
             <Link to={"/register"}>
@@ -55,7 +54,8 @@ export const NavbarComponent = () => {
             </Link>
           </>
         )}
-      </div>
+      </div> */}
+      
     </Navbar>
   );
 };

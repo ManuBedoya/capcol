@@ -4,6 +4,8 @@ import { useState, useEffect, React } from "react";
 import axios from "axios";
 import "./../../styles/App.css";
 import { urlGetProducts } from "../../constants/constants";
+import { ref, getDownloadURL } from "firebase/storage"
+import { storage } from "../../firebase/firebaseService";
 
 export default function ProductsHome() {
   const [products, setProducts] = useState([]);
@@ -16,9 +18,16 @@ export default function ProductsHome() {
   useEffect(() => {
     axios
       .get(urlGetProducts)
-      .then(function (response) {
+      .then(async (response) => {
         const { data } = response;
-        setProducts(data);
+        const updateProducts = await Promise.all(
+          data.map(async (product) => {
+            const aux = await getDownloadURL(ref(storage, product.img.split(",")[0]));
+            return {...product, img: aux};
+          })
+        )
+        console.log(updateProducts)
+        setProducts(updateProducts);
       })
       .catch(function (error) {
         console.log(error);
@@ -60,7 +69,7 @@ export default function ProductsHome() {
                     <Col>
                       <Card.Img
                         variant="top"
-                        src={img.split(",")[0]}
+                        src={img}
                         height="450px"
                       />
                     </Col>

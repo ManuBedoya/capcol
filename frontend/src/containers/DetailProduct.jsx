@@ -16,7 +16,7 @@ export const DetailProduct = () => {
   const [productData, setProductData] = useState({
     name: "",
     description: "",
-    price: 0.0,
+    price: "",
     img: "",
     ammount: 0,
     applyVariants: false,
@@ -43,7 +43,6 @@ export const DetailProduct = () => {
       .get(urlGetProducts + id)
       .then((response) => {
         const { data } = response;
-        console.log(data);
         setProductData(data);
       })
       .catch((e) => {
