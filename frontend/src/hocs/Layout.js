@@ -2,7 +2,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { NavbarComponent } from "../components/navegation/NavbarComponent";
 import { Footer } from "../components/navegation/Footer";
-import { BtnWpp } from "../components/general/BtnWpp";
+import { BtnWpp } from "../components/general/BtnIg";
 
 const Layout = (props) => {
   return (

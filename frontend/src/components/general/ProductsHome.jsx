@@ -26,11 +26,10 @@ export default function ProductsHome() {
             return {...product, img: aux};
           })
         )
-        console.log(updateProducts)
         setProducts(updateProducts);
       })
       .catch(function (error) {
-        console.log(error);
+        console.log("Error al cargar los productos");
       })
       .then(function () {});
   }, []);

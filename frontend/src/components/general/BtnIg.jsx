@@ -1,5 +1,5 @@
 import { MDBBtn, MDBIcon } from "mdb-react-ui-kit";
-import { url_wpp } from "../../constants/constants";
+import { url_ig } from "../../constants/constants";
 import "./../../styles/App.css";
 
 export const BtnWpp = () => {
@@ -9,15 +9,15 @@ export const BtnWpp = () => {
         outline
         color="success"
         floating
-        className=" text-white bg-success m-1"
+        className=" text-white bg-danger m-1"
         target="_blank"
-        href={url_wpp}
+        href={url_ig}
         role="button"
       >
-        <MDBIcon fab icon="whatsapp" className="w-100" />
+        <MDBIcon fab icon="instagram" className="w-100" />
       </MDBBtn>
       <span className="text-white text-wpp p-2">
-        También puedes realizar tu pédido por WhatsApp
+        También puedes realizar tu pédido por Instagram
       </span>
     </div>
   );

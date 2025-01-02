@@ -46,7 +46,7 @@ export const DetailProduct = () => {
         setProductData(data);
       })
       .catch((e) => {
-        console.log(e);
+        console.log("Falla en la carga de producto");
       });
   }, [id]);
 

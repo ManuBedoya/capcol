@@ -24,7 +24,7 @@ export const CarrouselImages = ({ img }) => {
         );
         setUrls(imageUrls);
       } catch (error) {
-        console.error("Error al obtener las URLs de las imágenes:", error);
+        console.error("Error al obtener las imágenes");
       }
     };
 

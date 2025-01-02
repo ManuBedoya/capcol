@@ -2,7 +2,7 @@ import React from "react";
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { MDBFooter, MDBContainer, MDBIcon, MDBBtn } from "mdb-react-ui-kit";
-import { url_wpp, url_gmail } from "../../constants/constants";
+import { url_ig, url_gmail } from "../../constants/constants";
 
 export const Footer = () => {
   return (
@@ -27,10 +27,10 @@ export const Footer = () => {
             floating
             className="m-1"
             target="_blank"
-            href={url_wpp}
+            href={url_ig}
             role="button"
           >
-            <MDBIcon fab icon="whatsapp" />
+            <MDBIcon fab icon="instagram" />
           </MDBBtn>
         </section>
       </MDBContainer>
