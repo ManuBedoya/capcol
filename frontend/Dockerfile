@@ -1,26 +1,14 @@
-# Use the Node alpine official image
-# https://hub.docker.com/_/node
-FROM node:18.19.1 AS build
-
-# Set config
-ENV NPM_CONFIG_UPDATE_NOTIFIER=false
-ENV NPM_CONFIG_FUND=false
-
-# Create and change to the app directory.
-WORKDIR /frontend/
-
-# Copy the files to the container image
-COPY public/ /frontend/public
-COPY src/ /frontend/src
-COPY package.json /frontend/
-
-# Install packages
+# Etapa 1: Construcción
+FROM node:18 AS build
+WORKDIR /frontend
+COPY package.json ./
 RUN npm install
-
 COPY . .
-# Build the app
 RUN npm run build
-# Expose the port
-EXPOSE 3000
-# Run the app
-CMD ["npm", "start"]
+
+# Etapa 2: Servir archivos estáticos
+FROM node:18
+WORKDIR /frontend
+RUN npm install -g serve
+COPY --from=build /frontend/build ./build
+CMD ["serve", "-s", "build", "-l", "3000"]
