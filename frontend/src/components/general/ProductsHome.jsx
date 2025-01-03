@@ -20,13 +20,13 @@ export default function ProductsHome() {
       .get(urlGetProducts)
       .then(async (response) => {
         const { data } = response;
-        const updateProducts = await Promise.all(
+        /*const updateProducts = await Promise.all(
           data.map(async (product) => {
             const aux = await getDownloadURL(ref(storage, product.img.split(",")[0]));
             return {...product, img: aux};
           })
-        )
-        setProducts(updateProducts);
+        )*/
+        setProducts(data);
       })
       .catch(function (error) {
         console.log("Error al cargar los productos");
