@@ -1,4 +1,4 @@
-const baseUrlBackend = process.env.REACT_APP_BASE_URL_BACKEND;
+const baseUrlBackend = "https://backendcapcol-production.up.railway.app/";
 
 /* ------------------------------------------------------------------
                   URLS TO SOCIAL MEDIA
