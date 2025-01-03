@@ -7,34 +7,20 @@ ENV NPM_CONFIG_UPDATE_NOTIFIER=false
 ENV NPM_CONFIG_FUND=false
 
 # Create and change to the app directory.
-WORKDIR /frontend
+WORKDIR /frontend/
 
 # Copy the files to the container image
-COPY package*.json ./
+COPY public/ /frontend/public
+COPY src/ /frontend/src
+COPY package.json /frontend/
 
 # Install packages
-RUN npm ci
+RUN npm install
 
-# Copy local code to the container image.
-COPY . ./
-
-# Build the app.
+COPY . .
+# Build the app
 RUN npm run build
-
-# Use the Caddy image
-FROM caddy
-
-# Create and change to the app directory.
-WORKDIR /frontend
-
-# Copy Caddyfile to the container image.
-COPY Caddyfile ./
-
-# Copy local code to the container image.
-RUN caddy fmt Caddyfile --overwrite
-
-# Copy files to the container image.
-COPY --from=build /frontend/dist ./dist
-
-# Use Caddy to run/serve the app
-CMD ["caddy", "run", "--config", "Caddyfile", "--adapter", "caddyfile"]
+# Expose the port
+EXPOSE 3000
+# Run the app
+CMD ["npm", "start"]
